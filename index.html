@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./index.css">
+    
 <title>Document</title>
 </head>
 <body>
@@ -30,6 +30,7 @@
         <br>
         <input type="button" name="insert_data" value="Insert" class="btn btn-success" id="button_Insert">
         <input type="button" name="edit_data" value="Edit" class="btn btn-success" id="button_Edit">
+       
     </form>
     </div>
 
@@ -60,8 +61,42 @@
         <div id="pagination-wrapper"></div>
     </div>
 
+    <script type="module"  src="./js/main.js"></script>
+    <script>
+   const sendHttpRequest = (method, url, data) => {
+    const promise = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+  
+      xhr.responseType = 'json';
+  
+      if (data) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
+  
+      xhr.onload = () => {
+        if (xhr.status >= 400) {
+          reject(xhr.response);
+        } else {
+          resolve(xhr.response);
+        }
+      };
+  
+      xhr.onerror = () => {
+        reject('Something went wrong!');
+      };
+  
+      xhr.send(JSON.stringify(data));
+    });
+    return promise;
+  };
+    function deleteuser(id) {
+    sendHttpRequest('DELETE', `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${id}`).then(responseData => {
+          console.log(responseData);
+ });
+}
 
-    <script type="module" src="./js/main.js"></script>
+//     </script>
     
 </body>
 </html>
