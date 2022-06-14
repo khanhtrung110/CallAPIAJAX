@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./index.css">
     
@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <div class="col-md-12">
-            <h3>Insert du lieu</h3>
+            <h3 id="h33">Insert du lieu</h3>
         </div>
     <form method="POST" id="insert_data_khachhang">
         <label ></label>
@@ -38,9 +38,11 @@
     <div class="container ">
 
     </div>
-    <div class="container ">
+    <div class="container container-table ">
         <!-- Table structure here -->
-        <table class="table-bordered" id="our-table">
+        <div class="outer-wrapper">
+        <div class="table-wrapper">
+        <table id="our-table">
             <thead>
                 <tr>
                     <!-- <th>STT</th> -->
@@ -52,51 +54,58 @@
                 </tr>
             </thead>
             <tbody id="table-body">
-    
             </tbody>
         </table>
+      </div>
+    </div>
     </div>
     
     <div class="container ">
         <div id="pagination-wrapper"></div>
+        <select name="" id="dropdown-menu" >
+          <option value="5">5</option>
+          <option value="10">10</option>
+        </select>
     </div>
 
-    <script type="module"  src="./js/main.js"></script>
+  
     <script>
-   const sendHttpRequest = (method, url, data) => {
-    const promise = new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+//    const sendHttpRequest = (method, url, data) => {
+//     const promise = new Promise((resolve, reject) => {
+//       const xhr = new XMLHttpRequest();
+//       xhr.open(method, url);
   
-      xhr.responseType = 'json';
+//       xhr.responseType = 'json';
   
-      if (data) {
-        xhr.setRequestHeader('Content-Type', 'application/json');
-      }
+//       if (data) {
+//         xhr.setRequestHeader('Content-Type', 'application/json');
+//       }
   
-      xhr.onload = () => {
-        if (xhr.status >= 400) {
-          reject(xhr.response);
-        } else {
-          resolve(xhr.response);
-        }
-      };
+//       xhr.onload = () => {
+//         if (xhr.status >= 400) {
+//           reject(xhr.response);
+//         } else {
+//           resolve(xhr.response);
+//         }
+//       };
   
-      xhr.onerror = () => {
-        reject('Something went wrong!');
-      };
+//       xhr.onerror = () => {
+//         reject('Something went wrong!');
+//       };
   
-      xhr.send(JSON.stringify(data));
-    });
-    return promise;
-  };
-    function deleteuser(id) {
-    sendHttpRequest('DELETE', `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${id}`).then(responseData => {
-          console.log(responseData);
- });
-}
-
+//       xhr.send(JSON.stringify(data));
+//     });
+//     return promise;
+//   };
+//     function deleteuser(id) {
+//       console.log('dang delete');
+//     sendHttpRequest('DELETE', `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${id}`).then(responseData => {
+//           console.log(responseData);
+         
+//  });
+// }
+   
 //     </script>
-    
+      <script type="module"  src="./js/main.js"></script>
 </body>
 </html>

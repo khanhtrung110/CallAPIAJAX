@@ -1,12 +1,15 @@
-import {postdatauser,putdatauser,LoadData} from './postdata.js';
+import {postdatauser,putdatauser,LoadData,selectionValue} from './postdata.js';
 
-
-
-$(document).ready(function () {
+window.addEventListener("load",()=>{
     LoadData();
     postdatauser();
     putdatauser();
+    selectionValue();
+    // selectionValue();
+   
 
+    
+    
 })
-// --------------------------------
-
+// selectionValue(numberPage);
+ 
